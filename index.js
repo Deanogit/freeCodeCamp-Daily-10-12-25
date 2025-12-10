@@ -7,3 +7,26 @@
 // For example, given "**This is bold**", return "<b>This is bold</b>".
 
 // Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
+
+function parseBold(markdown) {
+  console.log(markdown);
+  // split into arr
+  const arr = markdown.split('');
+  console.log(arr);
+  // or just regex it..
+  // write a regex pattern that matches two ** or two __
+  // const regex = /^[\*{2}]/
+  // swap out the ** or __ for <b> & </b>
+  return markdown;
+}
+
+parseBold('**This is bold**');
+// returns "<b>This is bold</b>"
+parseBold('__This is also bold__');
+// returns "<b>This is also bold</b>"
+parseBold('**This is not bold **');
+// returns "**This is not bold **"
+parseBold('__ This is also not bold__');
+// returns "__ This is also not bold__"
+parseBold('The **quick** brown fox __jumps__ over the **lazy** dog.');
+// returns "The <b>quick</b> brown fox <b>jumps</b> over the <b>lazy</b> dog."
