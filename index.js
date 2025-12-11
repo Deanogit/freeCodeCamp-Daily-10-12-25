@@ -17,6 +17,16 @@ function parseBold(markdown) {
   // write a regex pattern that matches two ** or two __
   // const regex = /^[\*{2}]/
   // swap out the ** or __ for <b> & </b>
+  // the regex pattern must start with
+  // ** or __
+  // const regex = /^[\*{2}|\_{2}]/
+  // followed by a-z
+  // then spaces & a-z
+  // and must end with ** or __
+  // const regex = /^[\*{2}|\_{2}][a-z]+[\d*][\*{2}|\_{2}]$/gi
+
+  // tested regex
+  // const regex = /^[\*]{2}|[\_]{2}|[a-z]+|[\s]+|[a-z]+[\*]{2}|[\_|\*]{2}$/gi
   return markdown;
 }
 
