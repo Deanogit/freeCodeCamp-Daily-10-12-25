@@ -8,26 +8,37 @@
 
 // Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.
 
+// function parseBold(markdown) {
+//   console.log(markdown)
+// split into arr
+//  const arr = markdown.split("")
+//  console.log(arr)
+// or just regex it..
+// write a regex pattern that matches two ** or two __
+// const regex = /^[\*{2}]/
+// swap out the ** or __ for <b> & </b>
+// the regex pattern must start with
+// ** or __
+// const regex = /^[\*{2}|\_{2}]/
+// followed by a-z
+// then spaces & a-z
+// and must end with ** or __
+// const regex = /^[\*{2}|\_{2}][a-z]+[\d*][\*{2}|\_{2}]$/gi
+
+// tested regex
+// const regex = /^[\*]{2}|[\_]{2}|[a-z]+|[\s]+|[a-z]+[\*]{2}|[\_|\*]{2}$/gi
+//  return markdown;
+// }
+
 function parseBold(markdown) {
   console.log(markdown);
-  // split into arr
-  const arr = markdown.split('');
-  console.log(arr);
-  // or just regex it..
-  // write a regex pattern that matches two ** or two __
-  // const regex = /^[\*{2}]/
-  // swap out the ** or __ for <b> & </b>
-  // the regex pattern must start with
-  // ** or __
-  // const regex = /^[\*{2}|\_{2}]/
-  // followed by a-z
-  // then spaces & a-z
-  // and must end with ** or __
-  // const regex = /^[\*{2}|\_{2}][a-z]+[\d*][\*{2}|\_{2}]$/gi
+  const regex = /^[\*]{2}|[\_]{2}|[a-z]+|[\s]+|[a-z]+[\*]{2}|[\_|\*]{2}$/gi;
+  // doesn't work because it doesnt assert no spaces before or after ** __
 
-  // tested regex
-  // const regex = /^[\*]{2}|[\_]{2}|[a-z]+|[\s]+|[a-z]+[\*]{2}|[\_|\*]{2}$/gi
-  return markdown;
+  // testing lookahead and lookbehind
+  // ^[\*]{2}|[\_]{2}(?=[\S])(?<=[\S])[\*]{2}$
+  let result = regex.test(markdown);
+  console.log(result);
 }
 
 parseBold('**This is bold**');
